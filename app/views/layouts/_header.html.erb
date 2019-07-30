@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="<%= root_url%>">Prime Shoppers</a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Mens</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Womens</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Kids</a>
+      </li>
+    </ul>
+    <div>
+      <% if(current_user) %>
+        <%= link_to 'Logout',destroy_user_session_path,method: 'delete', class: 'nav-link mr-3' %>
+      <% else %>
+        <%= link_to 'Login', new_user_session_path, class: 'nav-link mr-3' %>
+      <% end %>
+    </div>
+  </div>
+</nav>

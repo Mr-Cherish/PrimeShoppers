@@ -1,0 +1,54 @@
+<div class="container mt-5">
+  <div class='row justify-content-md-center'>
+    <div class="col-md-5 text-center jumbotron" style='background-color: #000000a3'>
+
+      <h2 class="text-white">Log in</h2>
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field">
+          <br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: 'Email' ,class: 'form-control' %>
+        </div>
+
+        <div class="field">
+          <br />
+          <%= f.password_field :password, autocomplete: "current-password",placeholder: 'Password', class: 'form-control' %>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="field">
+            <br />
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me, class: 'text-white' %>
+          </div>
+        <% end %>
+
+        <div class="actions mt-4">
+          <%= f.submit "Log in" ,class: 'btn btn-md btn-success' %>
+          <input type="reset" name="reset" value="Reset" class='btn btn-md btn-danger ml-3'>
+        </div>
+      <% end %>
+
+      <div class="mt-5 text-white">
+      <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>
+<style media='screen'>
+    body{
+      background-image: url(https://previews.123rf.com/images/dafnadar/dafnadar1710/dafnadar171000015/87980709-seamless-pattern-with-travel-icons-vacation-holiday-voyage-hand-drawn-vector-background.jpg);
+    }
+    a.Mylinks{
+      color: #b6dcff;
+      transition: letter-spacing .3s ease-in-out;
+    }
+    a.Mylinks:hover{
+      color: #b6dcff;
+      letter-spacing:2px;
+      text-decoration: none;
+    }
+    div#error_explanation{
+      color: red;
+    }
+</style>

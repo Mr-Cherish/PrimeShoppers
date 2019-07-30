@@ -7,9 +7,19 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   </head>
 
   <body>
-    <%= yield %>
+      <%= render 'layouts/header'%>
+      <% if(notice) %>
+      <p class="notice"><%= notice %></p>
+      <% end %>
+      <% if(alert) %>
+      <p class="alert"><%= alert %></p>
+      <% end %>
+        <%= yield %>
   </body>
 </html>
