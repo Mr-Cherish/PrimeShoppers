@@ -1,10 +1,51 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-3 jumbotron"></div>
-    <div class='col-md-1'></div>
-    <div class="col-md-3 jumbotron"></div>
-    <div class='col-md-1'></div>
-    <div class="col-md-3 jumbotron"></div>
-    <div class='col-md-1'></div>
+<%
+@collection1 = Category.first
+@collection2 = Category.second
+@collection3 = Category.third
+%>
+  <h1 class="text-center">Featured Collection</h1>
+  <br/>
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-md-3">
+        <a href="<%= category_path(@collection1)%>">
+          <img src='./assets/1.png' height="auto" width="100%" class="img collection-img" alt='Collection1'/>
+        </a>
+        <h3 class="text-center"><%= @collection1.name%>
+        </h3>
+
+      </div>
+
+      <div class='col-md-1'></div>
+
+      <div class="col-md-3">
+        <a href="<%= category_path(@collection2)%>">
+          <img src='./assets/2.png' height="auto" width="100%" class="img collection-img" alt='Collection2'/>
+        </a>
+        <h3 class="text-center">
+          <%= @collection2.name %></h3>
+
+      </div>
+
+      <div class='col-md-1'></div>
+
+      <div class="col-md-3">
+        <a href="<%= category_path(@collection3)%>">
+          <img src='./assets/3.png' height="auto" width="100%" class="img collection-img" alt='Collection3'/>
+        </a>
+        <h3 class="text-center">
+          <%= @collection3.name %></h3>
+
+      </div>
+
+    </div>
   </div>
-</div>
+  <br/><br/><br/><br/><br/><br/>
+  <style media="screen">
+    .collection-img {
+      transition: border 0.5s ease-in-out;
+    }
+    .collection-img:hover {
+      border: 10px solid lightgray;
+    }
+  </style>
