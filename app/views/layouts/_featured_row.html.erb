@@ -1,41 +1,35 @@
 <%
-@collection1 = Category.first
-@collection2 = Category.second
-@collection3 = Category.third
+  @category1 = Category.first
+  @category2 = Category.second
+  @category3 = Category.third
 %>
   <h1 class="text-center">Featured Collection</h1>
   <br/>
   <div class="container">
     <div class="row justify-content-md-center">
       <div class="col-md-3">
-        <a href="<%= category_path(@collection1)%>">
+        <a href='<%= category_path(@category1) %>'>
           <img src='./assets/1.png' height="auto" width="100%" class="img collection-img" alt='Collection1'/>
         </a>
-        <h3 class="text-center"><%= @collection1.name%>
-        </h3>
-
+        <h3 class="text-center"><%= @category1.name %></h3>
       </div>
 
       <div class='col-md-1'></div>
 
       <div class="col-md-3">
-        <a href="<%= category_path(@collection2)%>">
+        <a href='<%= category_path(@category2) %>'>
           <img src='./assets/2.png' height="auto" width="100%" class="img collection-img" alt='Collection2'/>
         </a>
-        <h3 class="text-center">
-          <%= @collection2.name %></h3>
-
+        <h3 class="text-center"><%= @category2.name %></h3>
       </div>
 
       <div class='col-md-1'></div>
 
       <div class="col-md-3">
-        <a href="<%= category_path(@collection3)%>">
+        <a href='<%= category_path(@category2) %>'>
           <img src='./assets/3.png' height="auto" width="100%" class="img collection-img" alt='Collection3'/>
         </a>
-        <h3 class="text-center">
-          <%= @collection3.name %></h3>
-
+        <h3 class="text-center"><%= @category3.name %></h3>
       </div>
 
     </div>
