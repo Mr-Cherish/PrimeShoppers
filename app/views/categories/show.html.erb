@@ -1,15 +1,26 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @category.description %>
-</p>
-
-<%= link_to 'Edit', edit_category_path(@category) %>
-|
-<%= link_to 'Back', categories_path %>
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-12'>
+      <br/><br/>
+      <h1 class='text-center'><%= @category.name %></h1>
+      <p class='text-center'><%= @category.description %></p>
+    </div>
+  </div>
+  <div class='row'>
+    <% @category.products.with_attached_images.each do |product| %>
+      <div class='col-md-3'>
+        <% if product.price < product.compare_at %>
+          <span class="position-absolute"><%= image_tag 'sale.png', height: '50px', width: '50px', style: 'left: -10px' %></span>
+        <% end %>
+        <% first_image = product.images.first %>
+          <a href="<%= product_path(product) %>"><%= image_tag first_image %></a><br/>
+          <h4><%= product.name %></h4>
+          <h6><%= product.price %>₹
+            <% if product.price < product.compare_at %>
+              <strike class="text-secondary small"><%= product.compare_at %>₹</strike>
+            <% end %>
+          </h6>
+        </div>
+      <% end %>
+    </div>
+  </div>
