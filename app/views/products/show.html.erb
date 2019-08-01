@@ -1,29 +1,62 @@
-<p id="notice"><%= notice %></p>
+<div class='container-fluid'>
+  <div class='row mt-5'>
+    <div class='col-md-5'>
+      <div id='demo' class='carousel slide' data-ride='carousel'>
+        <!-- The slideshow -->
+        <div class='carousel-inner'>
+          <% @product.images.each do |image| %>
+            <div class="carousel-item <%= (image == @product.images.first)? 'active':'' %>">
+              <%= image_tag image %>
+            </div>
+          <% end %>
+        </div>
+        <!-- Left and right controls -->
+        <a class='carousel-control-prev' href='#demo' data-slide='prev'>
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class='carousel-control-next' href='#demo' data-slide='next'>
+          <span class='carousel-control-next-icon'></span>
+        </a>
+      </div>
+    </div>
+    <div class='col-md-1'></div>
+    <div class='col-md-6'>
+      <div>
+        <h2><%= @product.name %></h2>
+        <span><%= fa_icon('star') %></span>
+        <span><%= fa_icon('star') %></span>
+        <span><%= fa_icon('star') %></span>
+        <span><%= fa_icon('star') %></span>
+        <span><%= fa_icon('star-half') %></span>
+      </div>
+      <br/>
+      <div class="mt-4">
+        <h5><%= @product.price %>₹
+          <% if @product.price < @product.compare_at %>
+            <strike class="text-secondary small"><%= @product.compare_at %>₹</strike>
+          <% end %>
+        </h5>
+      </div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
+      <div><%= @product.description %></div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
-
-<p>
-  <strong>Compare at:</strong>
-  <%= @product.compare_at %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @product.category %>
-</p>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+      <div class="mt-4">
+        <button type="button" name="button" class="btn btn-secondary btn-lg">Add to cart</button>
+        <button type="button" name="button" class="btn btn-primary btn-lg">Buy Now</button>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  /* Make the image fully responsive */
+  .carousel-inner img {
+    width: 100%;
+    height: 100%;
+  }
+  .carousel-control-prev-icon {
+    background-color: black;
+  }
+  .carousel-control-next-icon {
+    background-color: black;
+  }
+</style>

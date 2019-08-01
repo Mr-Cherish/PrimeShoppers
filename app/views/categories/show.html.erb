@@ -8,18 +8,20 @@
   </div>
   <div class='row'>
     <% @category.products.with_attached_images.each do |product| %>
-      <div class='col-md-3'>
+      <div class='col-md-3 mb-3'>
         <% if product.price < product.compare_at %>
-          <span class="position-absolute"><%= image_tag 'sale.png', height: '50px', width: '50px', style: 'left: -10px' %></span>
+          <span class="position-absolute"><%= image_tag 'sale.png', height: '45px', width: '45px' %></span>
         <% end %>
         <% first_image = product.images.first %>
           <a href="<%= product_path(product) %>"><%= image_tag first_image %></a><br/>
-          <h4><%= product.name %></h4>
-          <h6><%= product.price %>₹
-            <% if product.price < product.compare_at %>
-              <strike class="text-secondary small"><%= product.compare_at %>₹</strike>
-            <% end %>
-          </h6>
+          <div class="m-2">
+            <h4><%= product.name %></h4>
+            <h6><%= product.price %>₹
+              <% if product.price < product.compare_at %>
+                <strike class="text-secondary small"><%= product.compare_at %>₹</strike>
+              <% end %>
+            </h6>
+          </div>
         </div>
       <% end %>
     </div>
